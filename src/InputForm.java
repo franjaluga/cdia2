@@ -10,7 +10,7 @@ public class InputForm{
 
     public InputForm(){
         this.jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.jf.setSize(500,800);
+        this.jf.setSize(500,600);
 
     }
 
@@ -18,7 +18,7 @@ public class InputForm{
 
         JPanel jp = new JPanel(new GridLayout(18,2,10,10));
         jp.setBorder(new EmptyBorder(50,50,50,50));
-        jp.setSize(500,800);
+        jp.setSize(500,600);
         this.jf.add(jp);
 
         //BLOQUE 0
