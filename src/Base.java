@@ -12,7 +12,7 @@ public class Base {
     private double remesa_liquida;
 
 
-    public Base calculateFromEmbrutecido(double embrutecido, boolean cdti){
+    public Base calculateFromEmbrutecido(double embrutecido, boolean cdti, boolean regimen){
 
         Base base = new Base();
 
@@ -20,12 +20,12 @@ public class Base {
 
         double rounded = Math.round(base.remesa_bruta * 0.369863);
 
-        base = processBase( base , cdti);
+        base = processBase( base , cdti, regimen);
 
         return base;
     }
 
-    public Base calculateFromLiquido( double liquido, boolean cdti ){
+    public Base calculateFromLiquido( double liquido, boolean cdti, boolean regimen ){
         Base base = new Base();
 
         boolean estado = true;
@@ -33,7 +33,7 @@ public class Base {
 
         while( estado ){
 
-            base = processBase( base , cdti);
+            base = processBase( base , cdti, regimen);
 
             if( base.remesa_liquida < liquido){
                 base.remesa_bruta = base.remesa_bruta + 1;
@@ -47,9 +47,14 @@ public class Base {
         return base;
     }
 
-    public Base processBase( Base base , boolean cdti ){
+    public Base processBase( Base base , boolean cdti, boolean regimen ){
 
-        base.incremento =  Math.round(base.remesa_bruta * 0.369863);
+        if(regimen){
+            base.incremento =  Math.round(base.remesa_bruta * 0.369863);
+        }else{
+            base.incremento =  Math.round(base.remesa_bruta * 0.142857);
+        }
+
         base.remesa_incrementada =  Math.round(base.remesa_bruta + base.incremento);
         base.impuesto_adicional =  Math.round(base.remesa_incrementada * 0.35);
         base.credito_provisorio =  Math.round(base.incremento);

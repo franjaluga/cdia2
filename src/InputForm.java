@@ -10,7 +10,7 @@ public class InputForm{
 
     public InputForm(){
         this.jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.jf.setSize(600,800);
+        this.jf.setSize(900,800);
 
     }
 
@@ -18,8 +18,9 @@ public class InputForm{
 
         JPanel jp = new JPanel(new GridLayout(19,2,10,10));
         jp.setBorder(new EmptyBorder(50,50,50,50));
-        jp.setSize(600,800);
+        jp.setSize(900,800);
         this.jf.add(jp);
+        this.jf.setTitle("Calculadora de impuesto adicional remesas");
 
         //BLOQUE 0A
         JRadioButton jrBtL = new JRadioButton("Bruto -> Liquido");
@@ -40,6 +41,16 @@ public class InputForm{
         ButtonGroup buttonGroupCdti = new ButtonGroup();
         buttonGroupCdti.add(jrCConv);
         buttonGroupCdti.add(jrSConv);
+
+        //BLOQUE 0C
+        JRadioButton jrTasaA= new JRadioButton("14-A");
+        JRadioButton jrTasaD3 = new JRadioButton("14-D3");
+
+        jrTasaA.setSelected(true);
+
+        ButtonGroup buttonGroupRegimen = new ButtonGroup();
+        buttonGroupRegimen.add(jrTasaA);
+        buttonGroupRegimen.add(jrTasaD3);
 
         //BLOQUE 1
         JLabel lbl_titulo1 = new JLabel("Detalle");
@@ -142,9 +153,9 @@ public class InputForm{
                 Base base = new Base();
 
                 if( jrBtL.isSelected() ){
-                    base = base.calculateFromEmbrutecido(Double.parseDouble(txt_remesa_bruta.getText()) , jrCConv.isSelected() );
+                    base = base.calculateFromEmbrutecido(Double.parseDouble(txt_remesa_bruta.getText()) , jrCConv.isSelected(), jrTasaA.isSelected() );
                 } else if ( jrLtB.isSelected() ) {
-                    base = base.calculateFromLiquido(Double.parseDouble(txt_remesa_liquida.getText()) , jrCConv.isSelected());
+                    base = base.calculateFromLiquido(Double.parseDouble(txt_remesa_liquida.getText()) , jrCConv.isSelected(), jrTasaA.isSelected());
                 }
 
                 txt_remesa_bruta.setText( String.format("%.0f", base.getRemesa_bruta()) );
@@ -196,15 +207,24 @@ public class InputForm{
 
         JPanel fp1 = new JPanel( new GridLayout(2,1));
         JPanel fp2 = new JPanel( new GridLayout(2,1));
+        JPanel fp3 = new JPanel( new GridLayout(2,1));
 
-        jp.add(fp1);
-        jp.add(fp2);
+        JPanel jSup = new JPanel(new GridLayout(1,3));
+        jSup.add(fp1);
+        jSup.add(fp2);
+        jSup.add(fp3);
+
+        jp.add(jSup);
+        jp.add(new JLabel(""));
 
         fp1.add(jrBtL);
         fp1.add(jrLtB);
 
         fp2.add(jrCConv);
         fp2.add(jrSConv);
+
+        fp3.add(jrTasaA);
+        fp3.add(jrTasaD3);
 
         jp.add(lbl_titulo1);
         jp.add(lbl_empty1);
