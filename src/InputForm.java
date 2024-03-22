@@ -127,9 +127,9 @@ public class InputForm{
                 Base base = new Base();
 
                 if( jrBtL.isSelected() ){
-                    base = base.calculateFromEmbrutecido(Integer.parseInt(txt_remesa_bruta.getText()));
+                    base = base.calculateFromEmbrutecido(Double.parseDouble(txt_remesa_bruta.getText()));
                 } else if ( jrLtB.isSelected() ) {
-                    base = base.calculateFromLiquido(Integer.parseInt(txt_remesa_liquida.getText()));
+                    base = base.calculateFromLiquido(Double.parseDouble(txt_remesa_liquida.getText()));
                 }
 
                 txt_remesa_bruta.setText(String.valueOf(base.getRemesa_bruta()));
