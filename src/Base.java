@@ -20,21 +20,8 @@ public class Base {
 
         double rounded = Math.round(base.remesa_bruta * 0.369863);
 
-        base.incremento = rounded;
-        base.remesa_incrementada = Math.round(base.remesa_bruta + base.incremento);
-        base.impuesto_adicional = Math.round(base.remesa_incrementada * 0.35);
-        base.credito_provisorio = Math.round(base.incremento);
+        base = processBase( base , cdti);
 
-        if(cdti){
-            base.restitucion = 0;
-        }else{
-            base.restitucion = Math.round(base.credito_provisorio * 0.35);
-        }
-
-        base.impuesto_adicional_por_pagar = Math.round(base.impuesto_adicional + base.restitucion - base.credito_provisorio );
-        base.remesa_bruta_final = Math.round(base.remesa_bruta);
-        base.impuesto_adicional_calculado = Math.round(base.impuesto_adicional_por_pagar);
-        base.remesa_liquida = Math.round(base.remesa_bruta_final - base.impuesto_adicional_calculado);
         return base;
     }
 
@@ -46,21 +33,7 @@ public class Base {
 
         while( estado ){
 
-            base.incremento =  Math.round(base.remesa_bruta * 0.369863);
-            base.remesa_incrementada =  Math.round(base.remesa_bruta + base.incremento);
-            base.impuesto_adicional =  Math.round(base.remesa_incrementada * 0.35);
-            base.credito_provisorio =  Math.round(base.incremento);
-
-            if(cdti){
-                base.restitucion = 0;
-            }else{
-                base.restitucion = Math.round(base.credito_provisorio * 0.35);
-            }
-
-            base.impuesto_adicional_por_pagar = Math.round(base.impuesto_adicional + base.restitucion - base.credito_provisorio );
-            base.remesa_bruta_final =  Math.round(base.remesa_bruta);
-            base.impuesto_adicional_calculado =  Math.round(base.impuesto_adicional_por_pagar);
-            base.remesa_liquida =  Math.round(base.remesa_bruta_final - base.impuesto_adicional_calculado);
+            base = processBase( base , cdti);
 
             if( base.remesa_liquida < liquido){
                 base.remesa_bruta = base.remesa_bruta + 1;
@@ -74,6 +47,26 @@ public class Base {
         return base;
     }
 
+    public Base processBase( Base base , boolean cdti ){
+
+        base.incremento =  Math.round(base.remesa_bruta * 0.369863);
+        base.remesa_incrementada =  Math.round(base.remesa_bruta + base.incremento);
+        base.impuesto_adicional =  Math.round(base.remesa_incrementada * 0.35);
+        base.credito_provisorio =  Math.round(base.incremento);
+
+        if(cdti){
+            base.restitucion = 0;
+        }else{
+            base.restitucion = Math.round(base.credito_provisorio * 0.35);
+        }
+
+        base.impuesto_adicional_por_pagar = Math.round(base.impuesto_adicional + base.restitucion - base.credito_provisorio );
+        base.remesa_bruta_final =  Math.round(base.remesa_bruta);
+        base.impuesto_adicional_calculado =  Math.round(base.impuesto_adicional_por_pagar);
+        base.remesa_liquida =  Math.round(base.remesa_bruta_final - base.impuesto_adicional_calculado);
+
+        return base;
+    }
 
 
     public double getRemesa_bruta() {

@@ -147,9 +147,6 @@ public class InputForm{
                     base = base.calculateFromLiquido(Double.parseDouble(txt_remesa_liquida.getText()) , jrCConv.isSelected());
                 }
 
-
-
-
                 txt_remesa_bruta.setText( String.format("%.0f", base.getRemesa_bruta()) );
                 txt_incremento.setText(String.format("%.0f", base.getIncremento()));
                 txt_remesa_inrementada.setText(String.format("%.0f", base.getRemesa_incrementada()));
