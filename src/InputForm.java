@@ -10,7 +10,7 @@ public class InputForm{
 
     public InputForm(){
         this.jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.jf.setSize(600,600);
+        this.jf.setSize(600,800);
 
     }
 
@@ -18,10 +18,10 @@ public class InputForm{
 
         JPanel jp = new JPanel(new GridLayout(19,2,10,10));
         jp.setBorder(new EmptyBorder(50,50,50,50));
-        jp.setSize(600,600);
+        jp.setSize(600,800);
         this.jf.add(jp);
 
-        //BLOQUE 0
+        //BLOQUE 0A
         JRadioButton jrBtL = new JRadioButton("Bruto -> Liquido");
         JRadioButton jrLtB = new JRadioButton("Liquido -> Bruto");
 
@@ -30,6 +30,16 @@ public class InputForm{
         ButtonGroup buttonGroup = new ButtonGroup();
         buttonGroup.add(jrBtL);
         buttonGroup.add(jrLtB);
+
+        //BLOQUE 0B
+        JRadioButton jrCConv = new JRadioButton("Con CDTI");
+        JRadioButton jrSConv = new JRadioButton("Sin CDTI");
+
+        jrCConv.setSelected(true);
+
+        ButtonGroup buttonGroupCdti = new ButtonGroup();
+        buttonGroupCdti.add(jrCConv);
+        buttonGroupCdti.add(jrSConv);
 
         //BLOQUE 1
         JLabel lbl_titulo1 = new JLabel("Detalle");
@@ -132,26 +142,29 @@ public class InputForm{
                 Base base = new Base();
 
                 if( jrBtL.isSelected() ){
-                    base = base.calculateFromEmbrutecido(Double.parseDouble(txt_remesa_bruta.getText()));
+                    base = base.calculateFromEmbrutecido(Double.parseDouble(txt_remesa_bruta.getText()) , jrCConv.isSelected() );
                 } else if ( jrLtB.isSelected() ) {
-                    base = base.calculateFromLiquido(Double.parseDouble(txt_remesa_liquida.getText()));
+                    base = base.calculateFromLiquido(Double.parseDouble(txt_remesa_liquida.getText()) , jrCConv.isSelected());
                 }
 
-                txt_remesa_bruta.setText(String.valueOf(base.getRemesa_bruta()));
-                txt_incremento.setText(String.valueOf(base.getIncremento()));
-                txt_remesa_inrementada.setText(String.valueOf(base.getRemesa_incrementada()));
-                txt_impto_adicional.setText(String.valueOf(base.getImpuesto_adicional()));
-                txt_restitucion.setText(String.valueOf(base.getRestitucion()));
-                txt_cred_provisorio.setText(String.valueOf(base.getCredito_provisorio()));
-                txt_impto_adic_determinado.setText(String.valueOf(base.getImpuesto_adicional_calculado()));
 
-                txt_cod_759.setText(String.valueOf(base.getRemesa_incrementada()));
-                txt_cod_760.setText(String.valueOf(base.getCredito_provisorio()));
-                txt_cod_761.setText(String.valueOf(base.getImpuesto_adicional_por_pagar()));
 
-                txt_remesa_bruta_final.setText(String.valueOf(base.getRemesa_bruta_final()));
-                txt_impto_adicional_ret.setText(String.valueOf(base.getImpuesto_adicional_calculado()));
-                txt_remesa_liquida.setText(String.valueOf(base.getRemesa_liquida()));
+
+                txt_remesa_bruta.setText( String.format("%.0f", base.getRemesa_bruta()) );
+                txt_incremento.setText(String.format("%.0f", base.getIncremento()));
+                txt_remesa_inrementada.setText(String.format("%.0f", base.getRemesa_incrementada()));
+                txt_impto_adicional.setText(String.format("%.0f", base.getImpuesto_adicional()));
+                txt_restitucion.setText(String.format("%.0f", base.getRestitucion()));
+                txt_cred_provisorio.setText(String.format("%.0f", base.getCredito_provisorio()));
+                txt_impto_adic_determinado.setText(String.format("%.0f", base.getImpuesto_adicional_calculado()));
+
+                txt_cod_759.setText(String.format("%.0f", base.getRemesa_incrementada()));
+                txt_cod_760.setText(String.format("%.0f", base.getCredito_provisorio()));
+                txt_cod_761.setText(String.format("%.0f", base.getImpuesto_adicional_por_pagar()));
+
+                txt_remesa_bruta_final.setText(String.format("%.0f", base.getRemesa_bruta_final()));
+                txt_impto_adicional_ret.setText(String.format("%.0f", base.getImpuesto_adicional_calculado()));
+                txt_remesa_liquida.setText(String.format("%.0f", base.getRemesa_liquida()));
 
             }
         });
@@ -184,8 +197,17 @@ public class InputForm{
             }
         });
 
-        jp.add(jrBtL);
-        jp.add(jrLtB);
+        JPanel fp1 = new JPanel( new GridLayout(2,1));
+        JPanel fp2 = new JPanel( new GridLayout(2,1));
+
+        jp.add(fp1);
+        jp.add(fp2);
+
+        fp1.add(jrBtL);
+        fp1.add(jrLtB);
+
+        fp2.add(jrCConv);
+        fp2.add(jrSConv);
 
         jp.add(lbl_titulo1);
         jp.add(lbl_empty1);

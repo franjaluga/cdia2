@@ -12,7 +12,7 @@ public class Base {
     private double remesa_liquida;
 
 
-    public Base calculateFromEmbrutecido(double embrutecido){
+    public Base calculateFromEmbrutecido(double embrutecido, boolean cdti){
 
         Base base = new Base();
 
@@ -24,7 +24,13 @@ public class Base {
         base.remesa_incrementada = Math.round(base.remesa_bruta + base.incremento);
         base.impuesto_adicional = Math.round(base.remesa_incrementada * 0.35);
         base.credito_provisorio = Math.round(base.incremento);
-        base.restitucion = Math.round(base.credito_provisorio * 0.35);
+
+        if(cdti){
+            base.restitucion = 0;
+        }else{
+            base.restitucion = Math.round(base.credito_provisorio * 0.35);
+        }
+
         base.impuesto_adicional_por_pagar = Math.round(base.impuesto_adicional + base.restitucion - base.credito_provisorio );
         base.remesa_bruta_final = Math.round(base.remesa_bruta);
         base.impuesto_adicional_calculado = Math.round(base.impuesto_adicional_por_pagar);
@@ -32,7 +38,7 @@ public class Base {
         return base;
     }
 
-    public Base calculateFromLiquido( double liquido ){
+    public Base calculateFromLiquido( double liquido, boolean cdti ){
         Base base = new Base();
 
         boolean estado = true;
@@ -44,7 +50,13 @@ public class Base {
             base.remesa_incrementada =  Math.round(base.remesa_bruta + base.incremento);
             base.impuesto_adicional =  Math.round(base.remesa_incrementada * 0.35);
             base.credito_provisorio =  Math.round(base.incremento);
-            base.restitucion = Math.round(base.credito_provisorio * 0.35);
+
+            if(cdti){
+                base.restitucion = 0;
+            }else{
+                base.restitucion = Math.round(base.credito_provisorio * 0.35);
+            }
+
             base.impuesto_adicional_por_pagar = Math.round(base.impuesto_adicional + base.restitucion - base.credito_provisorio );
             base.remesa_bruta_final =  Math.round(base.remesa_bruta);
             base.impuesto_adicional_calculado =  Math.round(base.impuesto_adicional_por_pagar);
@@ -62,22 +74,7 @@ public class Base {
         return base;
     }
 
-    public Base obtenerObjetoBaseCalculado( String mode, int value ){
 
-        Base b = new Base();
-        switch (mode){
-            case "Desde liquido":
-                b = this.calculateFromLiquido(value);
-                break;
-            case "Desde Bruto":
-                b = this.calculateFromEmbrutecido(value);
-                break;
-            default:
-                break;
-        }
-
-        return b;
-    }
 
     public double getRemesa_bruta() {
         return remesa_bruta;
