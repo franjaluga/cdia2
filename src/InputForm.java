@@ -10,15 +10,15 @@ public class InputForm{
 
     public InputForm(){
         this.jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.jf.setSize(500,600);
+        this.jf.setSize(600,600);
 
     }
 
     public void configure(){
 
-        JPanel jp = new JPanel(new GridLayout(18,2,10,10));
+        JPanel jp = new JPanel(new GridLayout(19,2,10,10));
         jp.setBorder(new EmptyBorder(50,50,50,50));
-        jp.setSize(500,600);
+        jp.setSize(600,600);
         this.jf.add(jp);
 
         //BLOQUE 0
@@ -40,11 +40,13 @@ public class InputForm{
         JTextArea txt_incremento = new JTextArea("0");
         JLabel lbl_remesa_inrementada = new JLabel("Remesa Incrementada");
         JTextArea txt_remesa_inrementada = new JTextArea("0");
-        JLabel lbl_impto_adicional = new JLabel("Impuesto Adicional");
+        JLabel lbl_impto_adicional = new JLabel("Ret. impuesto adicional según tasa");
         JTextArea txt_impto_adicional = new JTextArea("0");
+        JLabel lbl_restitucion = new JLabel("Restitucion");
+        JTextArea txt_restitucion = new JTextArea("0");
         JLabel lbl_cred_provisorio = new JLabel("Crédito provisorio");
         JTextArea txt_cred_provisorio = new JTextArea("0");
-        JLabel lbl_impto_adic_determinado = new JLabel("Impuesto adicional determinal");
+        JLabel lbl_impto_adic_determinado = new JLabel("Retención neta a pagar F50");
         JTextArea txt_impto_adic_determinado = new JTextArea("0");
 
         //BLOQUE 2
@@ -76,6 +78,7 @@ public class InputForm{
         txt_incremento.setEditable(false);
         txt_remesa_inrementada.setEditable(false);
         txt_impto_adicional.setEditable(false);
+        txt_restitucion.setEditable(false);
         txt_cred_provisorio.setEditable(false);
         txt_impto_adic_determinado.setEditable(false);
 
@@ -93,6 +96,7 @@ public class InputForm{
         txt_incremento.setFocusable(false);
         txt_remesa_inrementada.setFocusable(false);
         txt_impto_adicional.setFocusable(false);
+        txt_restitucion.setFocusable(false);
         txt_cred_provisorio.setFocusable(false);
         txt_impto_adic_determinado.setFocusable(false);
 
@@ -110,6 +114,7 @@ public class InputForm{
         txt_incremento.setBackground(Color.lightGray);
         txt_remesa_inrementada.setBackground(Color.lightGray);
         txt_impto_adicional.setBackground(Color.lightGray);
+        txt_restitucion.setBackground(Color.lightGray);
         txt_cred_provisorio.setBackground(Color.lightGray);
         txt_impto_adic_determinado.setBackground(Color.lightGray);
 
@@ -136,6 +141,7 @@ public class InputForm{
                 txt_incremento.setText(String.valueOf(base.getIncremento()));
                 txt_remesa_inrementada.setText(String.valueOf(base.getRemesa_incrementada()));
                 txt_impto_adicional.setText(String.valueOf(base.getImpuesto_adicional()));
+                txt_restitucion.setText(String.valueOf(base.getRestitucion()));
                 txt_cred_provisorio.setText(String.valueOf(base.getCredito_provisorio()));
                 txt_impto_adic_determinado.setText(String.valueOf(base.getImpuesto_adicional_calculado()));
 
@@ -191,6 +197,8 @@ public class InputForm{
         jp.add(txt_remesa_inrementada);
         jp.add(lbl_impto_adicional);
         jp.add(txt_impto_adicional);
+        jp.add(lbl_restitucion);
+        jp.add(txt_restitucion);
         jp.add(lbl_cred_provisorio);
         jp.add(txt_cred_provisorio);
         jp.add(lbl_impto_adic_determinado);

@@ -5,6 +5,7 @@ public class Base {
     private double remesa_incrementada;
     private double impuesto_adicional;
     private double credito_provisorio;
+    private double restitucion;
     private double impuesto_adicional_por_pagar;
     private double remesa_bruta_final;
     private double impuesto_adicional_calculado;
@@ -23,7 +24,8 @@ public class Base {
         base.remesa_incrementada = Math.round(base.remesa_bruta + base.incremento);
         base.impuesto_adicional = Math.round(base.remesa_incrementada * 0.35);
         base.credito_provisorio = Math.round(base.incremento);
-        base.impuesto_adicional_por_pagar = Math.round(base.impuesto_adicional - base.credito_provisorio);
+        base.restitucion = Math.round(base.credito_provisorio * 0.35);
+        base.impuesto_adicional_por_pagar = Math.round(base.impuesto_adicional + base.restitucion - base.credito_provisorio );
         base.remesa_bruta_final = Math.round(base.remesa_bruta);
         base.impuesto_adicional_calculado = Math.round(base.impuesto_adicional_por_pagar);
         base.remesa_liquida = Math.round(base.remesa_bruta_final - base.impuesto_adicional_calculado);
@@ -42,7 +44,8 @@ public class Base {
             base.remesa_incrementada =  Math.round(base.remesa_bruta + base.incremento);
             base.impuesto_adicional =  Math.round(base.remesa_incrementada * 0.35);
             base.credito_provisorio =  Math.round(base.incremento);
-            base.impuesto_adicional_por_pagar =  Math.round(base.impuesto_adicional - base.credito_provisorio);
+            base.restitucion = Math.round(base.credito_provisorio * 0.35);
+            base.impuesto_adicional_por_pagar = Math.round(base.impuesto_adicional + base.restitucion - base.credito_provisorio );
             base.remesa_bruta_final =  Math.round(base.remesa_bruta);
             base.impuesto_adicional_calculado =  Math.round(base.impuesto_adicional_por_pagar);
             base.remesa_liquida =  Math.round(base.remesa_bruta_final - base.impuesto_adicional_calculado);
@@ -110,5 +113,9 @@ public class Base {
 
     public double getRemesa_liquida() {
         return remesa_liquida;
+    }
+
+    public double getRestitucion() {
+        return restitucion;
     }
 }
