@@ -212,10 +212,10 @@ public class InputForm{
         JPanel jSup = new JPanel(new GridLayout(1,3));
         jSup.add(fp1);
         jSup.add(fp2);
-        jSup.add(fp3);
+        //jSup.add(fp3);
 
         jp.add(jSup);
-        jp.add(new JLabel(""));
+        jp.add(fp3);
 
         fp1.add(jrBtL);
         fp1.add(jrLtB);
