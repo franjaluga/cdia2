@@ -31,15 +31,24 @@ public class Base {
         boolean estado = true;
         base.remesa_bruta = 0;
 
-        while( estado ){
+        while( true ){
 
             base = processBase( base , cdti, regimen);
 
             if( base.remesa_liquida < liquido){
-                base.remesa_bruta = base.remesa_bruta + 1;
-                continue;
+                base.remesa_bruta = base.remesa_bruta + 1000;
             }else{
-                estado = true;
+                break;
+            }
+        }
+
+        while( true ){
+
+            base = processBase( base , cdti, regimen);
+
+            if( base.remesa_liquida > liquido){
+                base.remesa_bruta = base.remesa_bruta - 1;
+            }else{
                 break;
             }
         }
