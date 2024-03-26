@@ -12,6 +12,7 @@ public class InputForm{
     public InputForm(){
         this.jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.jf.setSize(650,800);
+        this.jf.setResizable(false);
 
     }
 
@@ -82,7 +83,7 @@ public class InputForm{
         JTextArea txt_cod_761 = new JTextArea("0");
 
         //BLOQUE 3
-        JLabel lbl_titulo3 = new JLabel("Conciliación de la remesa");
+        JLabel lbl_titulo3 = new JLabel("Conciliación remesa");
         JLabel lbl_empty3 = new JLabel("");
         JLabel lbl_remesa_bruta_final = new JLabel("Remesa Bruta (procesada)");
         JTextArea txt_remesa_bruta_final = new JTextArea("0");
@@ -288,6 +289,12 @@ public class InputForm{
 
         jp.add(lbl_empty4);
         jp.add(jb);
+
+        Font fontTitle = new Font("Arial", Font.BOLD, 20);
+
+        lbl_titulo1.setFont(fontTitle);
+        lbl_titulo2.setFont(fontTitle);
+        lbl_titulo3.setFont(fontTitle);
 
         this.jf.setVisible(true);
     }
