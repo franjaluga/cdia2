@@ -93,6 +93,7 @@ public class InputForm{
         JTextArea txt_remesa_liquida = new JTextArea("0");
 
         JLabel lbl_empty4 = new JLabel("");
+        JButton limpiar = new JButton("Limpiar");
         JButton jb = new JButton("Calcular");
 
         // COMPORTAMIENTOS BASE A
@@ -231,6 +232,26 @@ public class InputForm{
             }
         });
 
+        limpiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txt_remesa_bruta.setText("0");
+                txt_incremento.setText("0");
+                txt_remesa_inrementada.setText("0");
+                txt_impto_adicional.setText("0");
+                txt_restitucion.setText("0");
+                txt_cred_provisorio.setText("0");
+                txt_impto_adic_determinado.setText("0");
+
+                txt_cod_759.setText("0");
+                txt_cod_760.setText("0");
+                txt_cod_761.setText("0");
+
+                txt_remesa_bruta_final.setText("0");
+                txt_impto_adicional_ret.setText("0");
+                txt_remesa_liquida.setText("0");
+            }
+        });
 
         JPanel fp1 = new JPanel( new GridLayout(2,1));
         JPanel fp2 = new JPanel( new GridLayout(2,1));
@@ -287,7 +308,7 @@ public class InputForm{
         jp.add(lbl_remesa_liquida);
         jp.add(txt_remesa_liquida);
 
-        jp.add(lbl_empty4);
+        jp.add(limpiar);
         jp.add(jb);
 
         Font fontTitle = new Font("Arial", Font.BOLD, 20);
