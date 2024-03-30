@@ -22,7 +22,7 @@ public class InputForm{
 
     public InputForm(){
         this.jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.jf.setSize(650,900);
+        this.jf.setSize(650,800);
         this.jf.setResizable(false);
 
     }
@@ -31,7 +31,7 @@ public class InputForm{
 
         JPanel jp = new JPanel(new GridLayout(20,2,10,10));
         jp.setBorder(new EmptyBorder(20,50,20,50));
-        jp.setSize(650,900);
+        jp.setSize(650,800);
         this.jf.add(jp);
         this.jf.setTitle("Calculadora de impuesto adicional remesas");
 

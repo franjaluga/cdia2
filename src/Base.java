@@ -71,7 +71,12 @@ public class Base {
         if(cdti){
             base.restitucion = 0;
         }else{
-            base.restitucion = Math.round(base.credito_provisorio * 0.35);
+            if(regimen){
+                base.restitucion = Math.round(base.credito_provisorio * 0.35);
+            }else{
+                base.restitucion = Math.round(base.credito_provisorio * 0);
+            }
+
         }
 
         base.impuesto_adicional_por_pagar = Math.round(base.impuesto_adicional + base.restitucion - base.credito_provisorio );
