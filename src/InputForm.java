@@ -59,7 +59,7 @@ public class InputForm{
         JLabel lbl_empty1 = new JLabel("");
         JLabel lbl_remesa_bruta = new JLabel("Remesa Bruta");
         JTextArea txt_remesa_bruta = new JTextArea("0");
-        JLabel lbl_incremento = new JLabel("Incremento");
+        JLabel lbl_incremento = new JLabel("Incremento -> 27/73 (2024)");
         JTextArea txt_incremento = new JTextArea("0");
         JLabel lbl_remesa_inrementada = new JLabel("Remesa Incrementada");
         JTextArea txt_remesa_inrementada = new JTextArea("0");
@@ -250,6 +250,20 @@ public class InputForm{
                 txt_remesa_bruta_final.setText("0");
                 txt_impto_adicional_ret.setText("0");
                 txt_remesa_liquida.setText("0");
+            }
+        });
+
+        jrTasaA.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lbl_incremento.setText("Incremento -> 27/73 (2024)");
+            }
+        });
+
+        jrTasaD3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lbl_incremento.setText("Incremento -> 12.5/87.5 (2024)");
             }
         });
 
