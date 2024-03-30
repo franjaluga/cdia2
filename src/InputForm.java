@@ -5,22 +5,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
 
+
+/**
+ *
+ * Hola colega programador,
+ * Si haz llegado hasta aquí, bueno, no te culpo, Java se puede "descompilar" y no quise ofuscar este Código.
+ * Te aprovecho de contar que este es un "Producto Mínimo viable" por lo que
+ * apenas tiene prácticas de clean code. En siguientes iteraciones lo haré.
+ *
+ * Un saludo
+ */
+
 public class InputForm{
 
     JFrame jf = new JFrame();
 
     public InputForm(){
         this.jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.jf.setSize(650,800);
+        this.jf.setSize(650,900);
         this.jf.setResizable(false);
 
     }
 
     public void configure(){
 
-        JPanel jp = new JPanel(new GridLayout(19,2,10,10));
-        jp.setBorder(new EmptyBorder(50,50,50,50));
-        jp.setSize(650,800);
+        JPanel jp = new JPanel(new GridLayout(20,2,10,10));
+        jp.setBorder(new EmptyBorder(20,50,20,50));
+        jp.setSize(650,900);
         this.jf.add(jp);
         this.jf.setTitle("Calculadora de impuesto adicional remesas");
 
@@ -324,6 +335,20 @@ public class InputForm{
 
         jp.add(limpiar);
         jp.add(jb);
+
+        jp.add(new JLabel(""));
+
+        JPanel jpi = new JPanel(new GridLayout(2,1));
+        jp.add(jpi);
+
+        JLabel firma1 = new JLabel("Adquiere ésta versión o sus actualizaciones");
+        JLabel firma2 = new JLabel("al correo auditor.lucero@gmail.com");
+        jpi.add(firma1);
+        jpi.add(firma2);
+
+        firma1.setForeground(Color.blue);
+        firma2.setForeground(Color.blue);
+        jp.add(jpi);
 
         Font fontTitle = new Font("Arial", Font.BOLD, 20);
 
