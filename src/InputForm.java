@@ -341,7 +341,7 @@ public class InputForm{
         JPanel jpi = new JPanel(new GridLayout(2,1));
         jp.add(jpi);
 
-        JLabel firma1 = new JLabel("Adquiere ésta versión o sus actualizaciones");
+        JLabel firma1 = new JLabel("Adquiere un versión modificada o actualización");
         JLabel firma2 = new JLabel("al correo auditor.lucero@gmail.com");
         jpi.add(firma1);
         jpi.add(firma2);
